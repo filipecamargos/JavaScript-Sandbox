@@ -48,25 +48,23 @@ class MyBinarySearch {
     }
 
     removeNode(root, data) {
+        if (root.data == data) {
+            let tempRight = root.right;
+            let tempLeft = root.left;
+
+            // if (tempRight = null) {
+            //     root = tempLeft;
+            // } else if (tempLeft = null) {
+            //     root = tempRight
+            // } else {
+            //     root = tempRight
+            // }
+
+            return            
+        }
         if (data > root.data) {
-            if (root.right.data == data) {
-                let rightNode = root.right.right;
-                let leftNode = root.right.left;
-                root.right =  null;
-                this.insert(rightNode);
-                this.insert(leftNode);
-                return;
-            }
             this.removeNode(root.right, data)
         } else {
-            if (root.left.data == data) {
-                let rightNode = root.left.right;
-                let leftNode = root.left.left;
-                root.left = null;
-                this.insert(rightNode);
-                this.insert(leftNode);
-                return;
-            }
             this.removeNode(root.left, data)
         }
 
@@ -75,6 +73,7 @@ class MyBinarySearch {
 
     display() {
         this.displayNode(this.root);
+        console.log("---------------------");
     }
 
     displayNode(root) {
