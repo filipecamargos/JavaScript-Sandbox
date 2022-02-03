@@ -7,19 +7,19 @@
  * 2 - An account must be set with Google Cloud
  * 3 - Places API and JavaScript API must be enable 
  */
+const GoogleAPIKey = "<API_KEY>";
 
- const GoogleAPIKey = "<API_KEY>";
+const lat = '<lat>';
+const lon = '<long>';
+const rad = '<radius>';
 
- const lat = '<lat>';
- const lon = '<long>';
- const rad = '<radius>'
- const type = 'restaurant';
+const url  = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
+const location = `location=${lat},${lon}`;
+const radius = `&radius=${rad}`;
+const type = "&keyword='restaurant";
+const key = `&key=${GoogleAPIKey}`;
+const restaurantSearchUrl = url + location + radius + type + key;
 
- const url  = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
- const location = `location=${lat},${lon}`;
- const radius = `&radius=${rad}`;
- const type = `&keyword=${type}`;
- const key = `&key=${GoogleAPIKey}`;
- const restaurantSearchUrl = url + location + radius + type + key;
- 
- console.log(restaurantSearchUrl)
+fetch(restaurantSearchUrl)
+.then(response => response.json())
+.then(data => console.log(data));
